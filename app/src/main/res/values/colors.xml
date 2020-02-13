@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#00628A</color>
+    <color name="colorPrimaryDark">#002E57</color>
+    <color name="colorAccent">#D60000</color>
+
+    <color name="colorAfrica">#00A000</color>
+    <color name="colorAmerica">#D60000</color>
+    <color name="colorAsia">#7338CE</color>
+    <color name="colorEurope">#0081D2</color>
+    <color name="colorOceania">#FFCC00</color>
 </resources>
