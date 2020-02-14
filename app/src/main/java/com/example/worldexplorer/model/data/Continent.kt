@@ -6,8 +6,8 @@ import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup
 class Continent(title: String?,
                 val titleColor: Int,
                 val bitmap: Bitmap?,
-                items: MutableList<Country>?) :
-    ExpandableGroup<Country>(title, items) {
+                items: MutableList<CountryParcel>?) :
+    ExpandableGroup<CountryParcel>(title, items) {
 
     val continentTitle = title
 }
