@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/worldListFragment">
+    app:startDestination="@id/detailsFragment">
 
     <fragment
         android:id="@+id/worldListFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.worldexplorer.ui.details.DetailsFragment"
-        android:label="fragment_details"
+        android:label="Details"
         tools:layout="@layout/fragment_details" >
         <argument
             android:name="countryCode"

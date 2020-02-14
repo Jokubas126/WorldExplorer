@@ -4,9 +4,13 @@
     <color name="colorPrimaryDark">#002E57</color>
     <color name="colorAccent">#D60000</color>
 
+    <color name="countryBackgroundFilter">#CDFFFFFF</color>
+
     <color name="colorAfrica">#00A000</color>
     <color name="colorAmerica">#D60000</color>
     <color name="colorAsia">#7338CE</color>
     <color name="colorEurope">#0081D2</color>
     <color name="colorOceania">#FFCC00</color>
+
+
 </resources>

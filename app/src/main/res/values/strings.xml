@@ -7,4 +7,14 @@
 
     <!-- Image content descriptions -->
     <string name="continent_image">Continent image</string>
+    <string name="flag_image">Flag image</string>
+
+    <!-- UI additions -->
+    <string name="population">Population:&#160;</string>
+    <string name="area">Area:&#160;</string>
+    <string name="metres_squared">&#160;m\u00B2</string>
+    <string name="languages">Languages:&#160;</string>
+    <string name="currencies">Currencies:&#160;</string>
+    <string name="regional_blocks">Regional blocks:&#160;</string>
+    <string name="bordering_countries">Bordering countries:&#160;</string>
 </resources>
