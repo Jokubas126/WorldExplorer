@@ -6,11 +6,10 @@
 
     <color name="countryBackgroundFilter">#CDFFFFFF</color>
 
-    <color name="colorAfrica">#00A000</color>
-    <color name="colorAmerica">#D60000</color>
-    <color name="colorAsia">#7338CE</color>
-    <color name="colorEurope">#0081D2</color>
-    <color name="colorOceania">#FFCC00</color>
-
+    <color name="africa">#00A000</color>
+    <color name="americas">#D60000</color>
+    <color name="asia">#7338CE</color>
+    <color name="europe">#0081D2</color>
+    <color name="oceania">#FFCC00</color>
 
 </resources>

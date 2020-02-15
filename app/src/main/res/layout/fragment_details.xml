@@ -81,7 +81,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{String.valueOf(country.areaSize)}"
+                            android:text="@{String.valueOf(country.area)}"
                             android:textAppearance="@style/ContentTextStyle" />
 
                         <TextView
@@ -101,7 +101,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{country.languages}"
+                        android:text=""
                         android:textAppearance="@style/ContentTextStyle" />
 
                     <LinearLayout
@@ -131,7 +131,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{country.regionalBlocks}"
                         android:textAppearance="@style/ContentTextStyle" />
 
                     <TextView

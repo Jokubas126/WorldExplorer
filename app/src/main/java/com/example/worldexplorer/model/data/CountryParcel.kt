@@ -2,32 +2,34 @@ package com.example.worldexplorer.model.data
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 
-class CountryParcel: Parcelable{
+class CountryParcel() : Parcelable {
 
-    var countryName: String
-    var countryFlagPath: String
+    @SerializedName("name")
+    lateinit var countryName: String
 
-    constructor(name: String, flagImagePath: String){
+    @SerializedName("flag")
+    lateinit var countryFlagPath: String
+
+    constructor(name: String, flagImagePath: String) : this() {
         countryName = name
         countryFlagPath = flagImagePath
     }
 
     //--------------- parcel related -----------------//
 
-    @Suppress("UNREACHABLE_CODE")
-    constructor() : this(
-        TODO("name"),
-        TODO("flagImagePath")
-    )
+    constructor(parcel: Parcel) : this()
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {}
 
-    override fun describeContents(): Int { return 0 }
+    override fun describeContents(): Int {
+        return 0
+    }
 
     companion object CREATOR : Parcelable.Creator<CountryParcel> {
         override fun createFromParcel(parcel: Parcel): CountryParcel {
-            return CountryParcel()
+            return CountryParcel(parcel)
         }
 
         override fun newArray(size: Int): Array<CountryParcel?> {

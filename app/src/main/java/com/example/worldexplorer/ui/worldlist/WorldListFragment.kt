@@ -10,15 +10,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.worldexplorer.R
-import com.example.worldexplorer.model.data.Continent
 import kotlinx.android.synthetic.main.fragment_world_list.*
 
 class WorldListFragment : Fragment() {
 
     private lateinit var viewModel: WorldListViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_world_list, container, false)
     }
@@ -26,15 +26,38 @@ class WorldListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(WorldListViewModel::class.java)
-
-        activity?.let { viewModel.fetch(it) }
+        viewModel.fetch()
 
         recycler_view.layoutManager = LinearLayoutManager(context)
-        recycler_view.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-        recycler_view.setHasFixedSize(true)
+        recycler_view.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
 
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
         viewModel.continent.observe(viewLifecycleOwner, Observer {
-            recycler_view.adapter = WorldListAdapter(it as MutableList<Continent>?)
+            recycler_view.adapter = WorldListAdapter(it)
+        })
+
+        viewModel.loading.observe(viewLifecycleOwner, Observer {
+            if (it != null){
+                if (it)
+                    progress_bar.visibility = View.VISIBLE
+                else progress_bar.visibility = View.GONE
+            }
+        })
+
+        viewModel.error.observe(viewLifecycleOwner, Observer {
+            if (it != null){
+                if (it)
+                    error_view.visibility = View.VISIBLE
+                else error_view.visibility = View.GONE
+            }
         })
     }
 }

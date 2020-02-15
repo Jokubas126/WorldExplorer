@@ -1,6 +1,5 @@
 package com.example.worldexplorer.ui.worldlist
 
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -8,7 +7,7 @@ import com.example.worldexplorer.R
 import com.example.worldexplorer.databinding.ItemContinentBinding
 import com.example.worldexplorer.databinding.ItemCountryBinding
 import com.example.worldexplorer.model.data.Continent
-import com.example.worldexplorer.model.data.Country
+import com.example.worldexplorer.model.data.CountryParcel
 import com.thoughtbot.expandablerecyclerview.ExpandableRecyclerViewAdapter
 import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup
 import com.thoughtbot.expandablerecyclerview.viewholders.ChildViewHolder
@@ -41,7 +40,7 @@ class WorldListAdapter(groups: MutableList<Continent>?) :
 
     override fun onBindChildViewHolder(holder: CountryViewHolder?, flatPosition: Int,
         group: ExpandableGroup<*>?, childIndex: Int) {
-        holder?.onBind(group?.items?.get(childIndex) as Country)
+        holder?.onBind(group?.items?.get(childIndex) as CountryParcel)
     }
 
     override fun onBindGroupViewHolder(holder: ContinentViewHolder?, flatPosition: Int, group: ExpandableGroup<*>?) {
@@ -62,9 +61,9 @@ class WorldListAdapter(groups: MutableList<Continent>?) :
 
     class CountryViewHolder(itemView: ItemCountryBinding) : ChildViewHolder(itemView.root) {
         private val view = itemView
-        private lateinit var country: Country
+        private lateinit var country: CountryParcel
 
-        fun onBind(country: Country){
+        fun onBind(country: CountryParcel){
             view.country = country
             this.country = country
         }
