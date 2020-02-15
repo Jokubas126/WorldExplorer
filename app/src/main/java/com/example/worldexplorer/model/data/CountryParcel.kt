@@ -19,8 +19,6 @@ class CountryParcel() : Parcelable {
 
     //--------------- parcel related -----------------//
 
-    constructor(parcel: Parcel) : this()
-
     override fun writeToParcel(parcel: Parcel, flags: Int) {}
 
     override fun describeContents(): Int {
@@ -29,7 +27,7 @@ class CountryParcel() : Parcelable {
 
     companion object CREATOR : Parcelable.Creator<CountryParcel> {
         override fun createFromParcel(parcel: Parcel): CountryParcel {
-            return CountryParcel(parcel)
+            return CountryParcel()
         }
 
         override fun newArray(size: Int): Array<CountryParcel?> {
