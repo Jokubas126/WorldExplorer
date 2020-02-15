@@ -7,7 +7,7 @@ class Continent(
     title: String?,
     val titleColor: Int,
     val bitmap: Bitmap?,
-    items: List<CountryParcel>
+    items: List<CountryParcel>?
 ) :
     ExpandableGroup<CountryParcel>(title, items) {
 
