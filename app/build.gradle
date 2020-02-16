@@ -1,10 +1,13 @@
 apply plugin: 'com.android.application'
 
+apply plugin: "androidx.navigation.safeargs"
+
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
+
 
 android {
     compileSdkVersion 29
@@ -44,13 +47,16 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
     implementation "androidx.core:core-ktx:$ktxVersion"
     implementation "com.google.android.material:material:$materialVersion"
+
     implementation "androidx.navigation:navigation-fragment:$navVersion"
     implementation "androidx.navigation:navigation-ui:$navVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleExtensionVersion"
     implementation "androidx.navigation:navigation-fragment-ktx:$navKtxVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navKtxVersion"
+
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
@@ -60,6 +66,7 @@ dependencies {
     implementation "com.github.corouteam:GlideToVectorYou:$glideToVectorYouVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
     implementation "com.thoughtbot:expandablerecyclerview:$expandableRecyclerViewVersion"
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

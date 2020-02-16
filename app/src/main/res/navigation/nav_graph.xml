@@ -11,7 +11,7 @@
         android:label="@string/world_list_fragment"
         tools:layout="@layout/fragment_world_list">
         <action
-            android:id="@+id/action_nav_home_to_detailsFragment"
+            android:id="@+id/actionDetailsFragment"
             app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
@@ -20,7 +20,7 @@
         android:label="Details"
         tools:layout="@layout/fragment_details" >
         <argument
-            android:name="countryCode"
+            android:name="country_full_name"
             app:argType="string" />
     </fragment>
 

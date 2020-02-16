@@ -1,6 +1,7 @@
 package com.example.worldexplorer.model.services
 
 import com.example.worldexplorer.model.api.CountryApi
+import com.example.worldexplorer.model.data.Country
 import com.example.worldexplorer.model.data.CountryParcel
 import io.reactivex.Single
 import retrofit2.Retrofit
@@ -20,5 +21,9 @@ class CountryApiService {
 
     fun getRegionCountryList(regionName: String): Single<List<CountryParcel>> {
         return api.getRegionCountryList(regionName)
+    }
+
+    fun getCountry(name: String): Single<List<Country>>{
+        return api.getCountry(name)
     }
 }

@@ -10,9 +10,9 @@ class Country {
     lateinit var capital: String
     var population: Int = 0
     var area: Int = 0
-    val languages: MutableList<Language> = mutableListOf()
-    val currencies: MutableList<Currency> = mutableListOf()
-    val regionalBlocs: MutableList<RegionalBloc> = mutableListOf()
+    val languages: List<Language> = listOf()
+    val currencies: List<Currency> = listOf()
+    val regionalBlocs: List<RegionalBloc> = listOf()
 
     /*@SerializedName("borders")
     val borderCountries: MutableList<CountryParcel> = mutableListOf()

@@ -3,10 +3,13 @@ package com.example.worldexplorer.ui.worldlist
 import android.app.Application
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.NavDirections
+import androidx.navigation.Navigation
 import com.example.worldexplorer.model.data.Continent
 import com.example.worldexplorer.model.data.CountryParcel
 import com.example.worldexplorer.model.services.CountryApiService
@@ -20,8 +23,8 @@ class WorldListViewModel(application: Application) : AndroidViewModel(applicatio
 
     private val app = application
 
-    private val _continent = MutableLiveData<MutableList<Continent>>()
-    val continent: LiveData<MutableList<Continent>> = _continent
+    private val _continents = MutableLiveData<MutableList<Continent>>()
+    val continents: LiveData<MutableList<Continent>> = _continents
 
     private val continentList = mutableListOf<Continent>()
 
@@ -35,8 +38,10 @@ class WorldListViewModel(application: Application) : AndroidViewModel(applicatio
     private val disposable = CompositeDisposable()
 
     fun fetch() {
-        updateUi(null, null)
-        (CONTINENT_LIST).forEach { fetchContinent(it) }
+        if (continents.value.isNullOrEmpty()) {
+            updateUi(null, null)
+            (CONTINENT_LIST).forEach { fetchContinent(it) }
+        }
     }
 
     private fun fetchContinent(continentName: String) {
@@ -51,21 +56,21 @@ class WorldListViewModel(application: Application) : AndroidViewModel(applicatio
         )
     }
 
-    private fun updateUi(name: String?, s: Any?) {
+    private fun updateUi(continentName: String?, s: Any?) {
         when (s) {
             is List<*> -> {
                 @Suppress("UNCHECKED_CAST")
                 continentList.add(
                     Continent(
-                        name,
-                        getColor(name),
-                        getDrawable(name),
+                        continentName,
+                        getColor(continentName),
+                        getDrawable(continentName),
                         s as List<CountryParcel>?
                     )
                 )
                 continentList.sortBy { it.continentTitle }
-                _continent.value = continentList
-                if (continent.value?.size == CONTINENT_LIST.size) {
+                _continents.value = continentList
+                if (continents.value?.size == CONTINENT_LIST.size) {
                     _loading.value = false
                     _error.value = false
                 }
@@ -100,6 +105,11 @@ class WorldListViewModel(application: Application) : AndroidViewModel(applicatio
                 app.packageName
             )
         )
+    }
+
+    fun onItemClicked(view: View, countryName: String) {
+        val action: NavDirections = WorldListFragmentDirections.actionDetailsFragment(countryName)
+        Navigation.findNavController(view).navigate(action)
     }
 
     override fun onCleared() {

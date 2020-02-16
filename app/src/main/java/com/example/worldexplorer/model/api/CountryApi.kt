@@ -8,7 +8,7 @@ import retrofit2.http.Path
 
 interface CountryApi {
     @GET("rest/v2/name/{name}?fullText=true")
-    fun getCountry(@Path("name") name: String): Single<Country>
+    fun getCountry(@Path("name") name: String): Single<List<Country>>
 
     @GET("rest/v2/region/{region}")
     fun getRegionCountryList(@Path("region") region: String): Single<List<CountryParcel>>

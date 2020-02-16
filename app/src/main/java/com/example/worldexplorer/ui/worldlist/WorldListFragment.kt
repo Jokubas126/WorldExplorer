@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.worldexplorer.R
 import kotlinx.android.synthetic.main.fragment_world_list.*
 
-class WorldListFragment : Fragment() {
+class WorldListFragment : Fragment(), WorldListAdapter.ItemClickListener {
 
     private lateinit var viewModel: WorldListViewModel
 
@@ -40,8 +40,8 @@ class WorldListFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.continent.observe(viewLifecycleOwner, Observer {
-            recycler_view.adapter = WorldListAdapter(it)
+        viewModel.continents.observe(viewLifecycleOwner, Observer {
+            recycler_view.adapter = WorldListAdapter(it, this)
         })
 
         viewModel.loading.observe(viewLifecycleOwner, Observer {
@@ -59,5 +59,9 @@ class WorldListFragment : Fragment() {
                 else error_view.visibility = View.GONE
             }
         })
+    }
+
+    override fun onItemClickListener(view: View, countryName: String) {
+        viewModel.onItemClicked(view, countryName)
     }
 }
