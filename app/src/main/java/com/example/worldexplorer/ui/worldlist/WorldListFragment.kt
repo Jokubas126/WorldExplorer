@@ -42,20 +42,26 @@ class WorldListFragment : Fragment(), WorldListAdapter.ItemClickListener {
     private fun observeViewModel() {
         viewModel.continents.observe(viewLifecycleOwner, Observer {
             recycler_view.adapter = WorldListAdapter(it, this)
+            recycler_view.visibility = View.VISIBLE
         })
 
         viewModel.loading.observe(viewLifecycleOwner, Observer {
             if (it != null){
-                if (it)
+                if (it){
                     progress_bar.visibility = View.VISIBLE
+                    recycler_view.visibility = View.GONE
+                }
+
                 else progress_bar.visibility = View.GONE
             }
         })
 
         viewModel.error.observe(viewLifecycleOwner, Observer {
             if (it != null){
-                if (it)
+                if (it){
                     error_view.visibility = View.VISIBLE
+                    recycler_view.visibility = View.GONE
+                }
                 else error_view.visibility = View.GONE
             }
         })

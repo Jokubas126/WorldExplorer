@@ -9,21 +9,26 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.worldexplorer.R
 import com.example.worldexplorer.databinding.FragmentDetailsBinding
+import com.example.worldexplorer.model.data.Country
+import com.example.worldexplorer.model.data.CountryParcel
 import kotlinx.android.synthetic.main.fragment_details.*
 
 
-class DetailsFragment : Fragment() {
+class DetailsFragment : Fragment(), BorderingCountriesAdapter.CountryClickedListener {
 
-    private lateinit var viewModel:DetailsViewModel
+    private lateinit var viewModel: DetailsViewModel
     private lateinit var informationLayout: FragmentDetailsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        informationLayout = DataBindingUtil.inflate(inflater, R.layout.fragment_details, container, false)
+        informationLayout =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_details, container, false)
         return informationLayout.root
     }
 
@@ -33,21 +38,39 @@ class DetailsFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(DetailsViewModel::class.java)
         viewModel.fetch(arguments)
 
+        recycler_view.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
         observeViewModel()
     }
 
-    private fun observeViewModel(){
+    private fun observeViewModel() {
         viewModel.country.observe(viewLifecycleOwner, Observer {
-            if (it != null)
+            if (it != null) {
                 informationLayout.country = it
+                recycler_view.adapter = BorderingCountriesAdapter(it.borderingCountries, this)
+                details_information_layout.visibility = View.VISIBLE
+            }
         })
         viewModel.loading.observe(viewLifecycleOwner, Observer {
             if (it != null)
-                progress_bar.visibility = it
+                if (it){
+                    progress_bar.visibility = View.VISIBLE
+                    details_information_layout.visibility = View.GONE
+                }
+                else progress_bar.visibility = View.GONE
         })
         viewModel.error.observe(viewLifecycleOwner, Observer {
             if (it != null)
-                error_view.visibility = it
+                if (it){
+                    error_view.visibility = View.VISIBLE
+                    details_information_layout.visibility = View.GONE
+                }
+                else error_view.visibility = View.GONE
         })
+    }
+
+    override fun onCountryClickedListener(view: View, countryName: String) {
+        viewModel.onBorderCountryClicked(view, countryName)
     }
 }

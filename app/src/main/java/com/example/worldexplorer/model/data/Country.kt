@@ -14,8 +14,11 @@ class Country {
     val currencies: List<Currency> = listOf()
     val regionalBlocs: List<RegionalBloc> = listOf()
 
-    /*@SerializedName("borders")
-    val borderCountries: MutableList<CountryParcel> = mutableListOf()
-    @SerializedName("latlng")
-    val globalPosition: MutableList<Double> = mutableListOf()*/
+    @SerializedName("borders")
+    val borderCountryCodes: List<String> = listOf()
+
+    val borderingCountries: MutableList<Country> = mutableListOf()
+
+    //@SerializedName("latlng")
+    //val globalPosition: MutableList<Double> = mutableListOf()
 }

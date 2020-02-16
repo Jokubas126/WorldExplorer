@@ -10,10 +10,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class CountryApiService {
 
-    private val BASE_URL: String = "https://restcountries.eu/"
+    private val baseUrl: String = "https://restcountries.eu/"
 
     private val api: CountryApi = Retrofit.Builder()
-        .baseUrl(BASE_URL)
+        .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
@@ -23,7 +23,11 @@ class CountryApiService {
         return api.getRegionCountryList(regionName)
     }
 
-    fun getCountry(name: String): Single<List<Country>>{
-        return api.getCountry(name)
+    fun getCountryByFullName(name: String): Single<List<Country>>{
+        return api.getCountryByFullName(name)
+    }
+
+    fun getCountryByCode(code: String): Single<Country>{
+        return api.getCountryByCode(code)
     }
 }

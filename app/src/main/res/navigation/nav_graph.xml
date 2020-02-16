@@ -22,6 +22,9 @@
         <argument
             android:name="country_full_name"
             app:argType="string" />
+        <action
+            android:id="@+id/actionDetailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
 
 </navigation>

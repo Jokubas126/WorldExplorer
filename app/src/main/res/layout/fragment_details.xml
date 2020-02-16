@@ -180,7 +180,7 @@
 
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/bordering_countries_recycler_view"
+                            android:id="@+id/recycler_view"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" />
@@ -197,11 +197,7 @@
                     <!-- there should be a mapView -->
 
                 </FrameLayout>
-
             </LinearLayout>
-
         </androidx.core.widget.NestedScrollView>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
