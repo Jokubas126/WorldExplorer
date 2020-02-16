@@ -9,4 +9,5 @@ val CONTINENT_LIST = listOf(
     "Asia",
     "Americas",
     "Africa",
-    "Oceania")
+    "Oceania"
+)

@@ -31,7 +31,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nestedScrollView"
@@ -57,8 +57,8 @@
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
                         android:contentDescription="@string/flag_image"
-                        android:scaleType="centerCrop"
-                        android:imageUrl="@{country.flagUrlPath}" />
+                        android:imageUrl="@{country.flagUrlPath}"
+                        android:scaleType="centerCrop" />
 
                     <FrameLayout
                         android:layout_width="match_parent"
@@ -124,17 +124,23 @@
 
                         </LinearLayout>
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/languages"
-                            android:textAppearance="@style/ContentSectionTextStyle" />
+                            android:layout_height="wrap_content">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textAppearance="@style/ContentTextStyle" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/languages"
+                                android:textAppearance="@style/ContentSectionTextStyle" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:anyListToString="@{country.languages}"
+                                android:textAppearance="@style/ContentTextStyle" />
+
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -149,7 +155,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text=""
+                                android:anyListToString="@{country.currencies}"
                                 android:textAppearance="@style/ContentTextStyle" />
 
                         </LinearLayout>
@@ -163,6 +169,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:anyListToString="@{country.regionalBlocs}"
                             android:textAppearance="@style/ContentTextStyle" />
 
                         <TextView
