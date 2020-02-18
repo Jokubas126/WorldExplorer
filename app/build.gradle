@@ -66,6 +66,9 @@ dependencies {
     implementation "com.github.corouteam:GlideToVectorYou:$glideToVectorYouVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
     implementation "com.thoughtbot:expandablerecyclerview:$expandableRecyclerViewVersion"
+    implementation 'com.caverock:androidsvg-aar:1.4'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
