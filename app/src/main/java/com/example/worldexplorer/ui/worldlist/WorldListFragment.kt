@@ -1,6 +1,7 @@
 package com.example.worldexplorer.ui.worldlist
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,9 @@ class WorldListFragment : Fragment(), WorldListAdapter.ItemClickListener {
 
     private lateinit var viewModel: WorldListViewModel
 
+    private lateinit var layoutManager: LinearLayoutManager
+    private var state: Parcelable? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,13 +32,11 @@ class WorldListFragment : Fragment(), WorldListAdapter.ItemClickListener {
         viewModel = ViewModelProvider(this).get(WorldListViewModel::class.java)
         viewModel.fetch()
 
-        recycler_view.layoutManager = LinearLayoutManager(context)
-        recycler_view.addItemDecoration(
-            DividerItemDecoration(
-                context,
-                DividerItemDecoration.VERTICAL
-            )
-        )
+        layoutManager = LinearLayoutManager(context)
+        recycler_view.layoutManager = layoutManager
+
+        if (state != null)
+            layoutManager.onRestoreInstanceState(state)
 
         observeViewModel()
     }
@@ -67,7 +69,12 @@ class WorldListFragment : Fragment(), WorldListAdapter.ItemClickListener {
         })
     }
 
-    override fun onItemClickListener(view: View, countryName: String) {
-        viewModel.onItemClicked(view, countryName)
+    override fun onItemClickListener(view: View, countryCode: String) {
+        viewModel.onItemClicked(view, countryCode)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        state = layoutManager.onSaveInstanceState()
     }
 }
