@@ -7,6 +7,14 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_main">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background_image"
+        android:scaleType="centerCrop"
+        android:tintMode="src_over"
+        android:tint="@color/countryBackgroundFilter"/>
+
     <fragment
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
