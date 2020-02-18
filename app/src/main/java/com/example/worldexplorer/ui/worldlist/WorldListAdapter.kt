@@ -22,7 +22,7 @@ class WorldListAdapter(groups: MutableList<Continent>?, itemClickListener: ItemC
     private val listener = itemClickListener
 
     interface ItemClickListener {
-        fun onItemClickListener(view: View, countryName: String)
+        fun onItemClickListener(view: View, countryCode: String)
     }
 
     override fun onCreateGroupViewHolder(parent: ViewGroup?, viewType: Int): ContinentViewHolder {
@@ -71,11 +71,11 @@ class WorldListAdapter(groups: MutableList<Continent>?, itemClickListener: ItemC
         fun onBind(country: CountryParcel, listener: ItemClickListener) {
             this.country = country
 
-            loadImage(view.country_flag_view, country.countryFlagPath)
-            view.country_name_view.text = country.countryName
+            loadImage(view.country_flag_view, country.flagPath)
+            view.country_name_view.text = country.name
 
             view.setOnClickListener {
-                listener.onItemClickListener(it, country.countryName)
+                listener.onItemClickListener(it, country.code)
             }
         }
     }

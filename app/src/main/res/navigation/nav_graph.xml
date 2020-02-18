@@ -20,7 +20,7 @@
         android:label="Details"
         tools:layout="@layout/fragment_details" >
         <argument
-            android:name="country_full_name"
+            android:name="country_code"
             app:argType="string" />
         <action
             android:id="@+id/actionDetailsFragment"

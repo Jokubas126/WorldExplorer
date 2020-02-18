@@ -15,7 +15,7 @@ class Country {
     val regionalBlocs: List<RegionalBloc> = listOf()
 
     @SerializedName("borders")
-    val borderCountryCodes: List<String> = listOf()
+    val borderCountryCodes: List<String>? = listOf()
 
     val borderingCountries: MutableList<Country> = mutableListOf()
 

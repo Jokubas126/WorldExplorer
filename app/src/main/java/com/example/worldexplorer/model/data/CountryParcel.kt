@@ -6,15 +6,20 @@ import com.google.gson.annotations.SerializedName
 
 class CountryParcel() : Parcelable {
 
-    @SerializedName("name")
-    lateinit var countryName: String
+    lateinit var name: String
 
     @SerializedName("flag")
-    lateinit var countryFlagPath: String
+    lateinit var flagPath: String
 
-    constructor(name: String, flagImagePath: String) : this() {
-        countryName = name
-        countryFlagPath = flagImagePath
+    @SerializedName("alpha3Code")
+    lateinit var code: String
+
+    lateinit var numericCode: String
+
+    constructor(countryName: String, flag: String, countryCode: String) : this() {
+        name = countryName
+        flagPath = flag
+        code = countryCode
     }
 
     //--------------- parcel related -----------------//

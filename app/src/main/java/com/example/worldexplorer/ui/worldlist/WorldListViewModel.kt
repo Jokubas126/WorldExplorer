@@ -107,8 +107,8 @@ class WorldListViewModel(application: Application) : AndroidViewModel(applicatio
         )
     }
 
-    fun onItemClicked(view: View, countryName: String) {
-        val action: NavDirections = WorldListFragmentDirections.actionDetailsFragment(countryName)
+    fun onItemClicked(view: View, countryCode: String) {
+        val action: NavDirections = WorldListFragmentDirections.actionDetailsFragment(countryCode)
         Navigation.findNavController(view).navigate(action)
     }
 

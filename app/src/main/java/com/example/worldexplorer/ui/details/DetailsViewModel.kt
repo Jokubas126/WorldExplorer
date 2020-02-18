@@ -11,6 +11,7 @@ import com.example.worldexplorer.model.data.Country
 import com.example.worldexplorer.model.data.CountryParcel
 import com.example.worldexplorer.model.services.CountryApiService
 import com.example.worldexplorer.ui.worldlist.WorldListFragmentDirections
+import com.example.worldexplorer.util.KEY_COUNTRY_CODE
 import com.example.worldexplorer.util.KEY_COUNTRY_FULL_NAME
 import com.example.worldexplorer.util.MAIN_LOCALE
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -21,9 +22,6 @@ class DetailsViewModel : ViewModel() {
 
     private val _country = MutableLiveData<Country>()
     val country: LiveData<Country> = _country
-
-    private val _borderCountry = MutableLiveData<Country>()
-    val borderCountry: LiveData<Country> = _borderCountry
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
@@ -45,8 +43,8 @@ class DetailsViewModel : ViewModel() {
         if (arguments != null) {
             countryDisposable.add(
                 countryApiService
-                    .getCountryByFullName(
-                        arguments.getString(KEY_COUNTRY_FULL_NAME)!!.toLowerCase(
+                    .getCountryByCode(
+                        arguments.getString(KEY_COUNTRY_CODE)!!.toLowerCase(
                             MAIN_LOCALE
                         )
                     )
@@ -54,7 +52,7 @@ class DetailsViewModel : ViewModel() {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(
                         {
-                            fetchBorderingCountries(it[0])
+                            fetchBorderingCountries(it)
                         },
                         { updateUi(it) }
                     )
@@ -63,21 +61,28 @@ class DetailsViewModel : ViewModel() {
     }
 
     private fun fetchBorderingCountries(country: Country) {
-        for (i in country.borderCountryCodes.indices) {
-            borderingCountriesDisposable.add(
-                countryApiService.getCountryByCode(country.borderCountryCodes[i].toLowerCase(MAIN_LOCALE))
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(
-                        {
-                            country.borderingCountries.add(it)
-                            if (country.borderingCountries.size == country.borderCountryCodes.size)
-                                updateUi(country)
-                        },
-                        { updateUi(it) }
+        if (!country.borderCountryCodes.isNullOrEmpty()){
+            for (i in country.borderCountryCodes.indices) {
+                borderingCountriesDisposable.add(
+                    countryApiService.getCountryByCode(
+                        country.borderCountryCodes[i].toLowerCase(
+                            MAIN_LOCALE
+                        )
                     )
-            )
-        }
+                        .subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(
+                            {
+                                country.borderingCountries.add(it)
+                                if (country.borderingCountries.size == country.borderCountryCodes.size)
+                                    updateUi(country)
+                            },
+                            { updateUi(it) }
+                        )
+                )
+            }
+        } else updateUi(country)
+
     }
 
     private fun updateUi(s: Any?) {
@@ -98,7 +103,7 @@ class DetailsViewModel : ViewModel() {
         }
     }
 
-    fun onBorderCountryClicked(view: View, countryName: String){
+    fun onBorderCountryClicked(view: View, countryName: String) {
         val action: NavDirections = DetailsFragmentDirections.actionDetailsFragment(countryName)
         Navigation.findNavController(view).navigate(action)
     }
