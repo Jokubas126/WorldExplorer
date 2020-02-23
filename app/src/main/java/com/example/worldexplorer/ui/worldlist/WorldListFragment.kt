@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.worldexplorer.R
+import com.thoughtbot.expandablerecyclerview.listeners.GroupExpandCollapseListener
+import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup
 import kotlinx.android.synthetic.main.fragment_world_list.*
 
 class WorldListFragment : Fragment(), WorldListAdapter.ItemClickListener {
@@ -18,6 +20,7 @@ class WorldListFragment : Fragment(), WorldListAdapter.ItemClickListener {
     private lateinit var viewModel: WorldListViewModel
 
     private lateinit var layoutManager: LinearLayoutManager
+    private lateinit var adapter: WorldListAdapter
     private var state: Parcelable? = null
 
     override fun onCreateView(
@@ -43,7 +46,8 @@ class WorldListFragment : Fragment(), WorldListAdapter.ItemClickListener {
 
     private fun observeViewModel() {
         viewModel.continents.observe(viewLifecycleOwner, Observer {
-            recycler_view.adapter = WorldListAdapter(it, this)
+            adapter = WorldListAdapter(it, this)
+            recycler_view.adapter = adapter
             recycler_view.visibility = View.VISIBLE
         })
 
@@ -69,9 +73,14 @@ class WorldListFragment : Fragment(), WorldListAdapter.ItemClickListener {
         })
     }
 
-    override fun onItemClickListener(view: View, countryCode: String) {
+    override fun onCountryClickListener(view: View, countryCode: String) {
         viewModel.onItemClicked(view, countryCode)
     }
+
+    override fun onContinentClickListener(position: Int) {
+        layoutManager.scrollToPositionWithOffset(position, 5)
+    }
+
 
     override fun onPause() {
         super.onPause()
