@@ -7,6 +7,9 @@ class Country {
     lateinit var flagUrlPath: String
 
     lateinit var name: String
+    @SerializedName("alpha3Code")
+    lateinit var code: String
+
     lateinit var capital: String
     var population: Int = 0
     var area: Int = 0

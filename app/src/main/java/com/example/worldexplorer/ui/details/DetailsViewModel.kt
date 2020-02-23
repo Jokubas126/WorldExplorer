@@ -103,8 +103,8 @@ class DetailsViewModel : ViewModel() {
         }
     }
 
-    fun onBorderCountryClicked(view: View, countryName: String) {
-        val action: NavDirections = DetailsFragmentDirections.actionDetailsFragment(countryName)
+    fun onCountryClicked(view: View, countryCode: String) {
+        val action: NavDirections = DetailsFragmentDirections.actionDetailsFragment(countryCode)
         Navigation.findNavController(view).navigate(action)
     }
 

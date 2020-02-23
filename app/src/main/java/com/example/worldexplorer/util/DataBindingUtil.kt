@@ -1,21 +1,16 @@
 package com.example.worldexplorer.util
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.os.Handler
-import android.os.Looper
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
-import com.caverock.androidsvg.SVG
+import com.example.worldexplorer.R
 import com.example.worldexplorer.model.data.Currency
 import com.example.worldexplorer.model.data.Language
 import com.example.worldexplorer.model.data.RegionalBloc
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
-import java.net.URL
-import kotlin.math.ceil
 
 
 // ---------------- Image related ------------------//
@@ -88,9 +83,11 @@ fun anyListToString(textView: TextView, list: List<*>?) {
 private fun listToString(textView: TextView, list: List<String>) {
     val stringBuilder: StringBuilder = java.lang.StringBuilder()
     for (word in list) {
-        if (!stringBuilder.isBlank())
+        if (stringBuilder.isNotBlank())
             stringBuilder.append(", ").append(word)
         else stringBuilder.append(word)
     }
-    textView.text = stringBuilder.toString()
+    if (stringBuilder.isNotBlank())
+        textView.text = stringBuilder.toString()
+    else textView.text = textView.resources.getString(R.string.none_message)
 }

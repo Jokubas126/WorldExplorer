@@ -16,7 +16,7 @@ class BorderingCountriesAdapter(private val countryList: MutableList<Country>, o
     private val listener = onCountryClickedListener
 
     interface CountryClickedListener {
-        fun onCountryClickedListener(view: View, countryName: String)
+        fun onCountryClickedListener(view: View, countryCode: String)
     }
 
     fun updateCountryList(newCountryList: List<Country>) {
@@ -48,7 +48,7 @@ class BorderingCountriesAdapter(private val countryList: MutableList<Country>, o
             itemCountryBinding.country = country
 
             itemView.setOnClickListener {
-                listener.onCountryClickedListener(it, country.name)
+                listener.onCountryClickedListener(it, country.code)
             }
         }
     }

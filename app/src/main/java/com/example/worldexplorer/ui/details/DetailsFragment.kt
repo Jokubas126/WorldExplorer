@@ -10,11 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.worldexplorer.R
 import com.example.worldexplorer.databinding.FragmentDetailsBinding
-import com.example.worldexplorer.model.data.Country
-import com.example.worldexplorer.model.data.CountryParcel
 import kotlinx.android.synthetic.main.fragment_details.*
 
 
@@ -48,7 +45,10 @@ class DetailsFragment : Fragment(), BorderingCountriesAdapter.CountryClickedList
         viewModel.country.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 informationLayout.country = it
-                recycler_view.adapter = BorderingCountriesAdapter(it.borderingCountries, this)
+                if (!it.borderingCountries.isNullOrEmpty()){
+                    recycler_view.adapter = BorderingCountriesAdapter(it.borderingCountries, this)
+                    bordering_countries_group.visibility = View.VISIBLE
+                }
                 details_information_layout.visibility = View.VISIBLE
             }
         })
@@ -70,7 +70,7 @@ class DetailsFragment : Fragment(), BorderingCountriesAdapter.CountryClickedList
         })
     }
 
-    override fun onCountryClickedListener(view: View, countryName: String) {
-        viewModel.onBorderCountryClicked(view, countryName)
+    override fun onCountryClickedListener(view: View, countryCode: String) {
+        viewModel.onCountryClicked(view, countryCode)
     }
 }
