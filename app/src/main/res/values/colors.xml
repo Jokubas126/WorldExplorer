@@ -5,6 +5,7 @@
     <color name="colorAccent">#D60000</color>
 
     <color name="countryBackgroundFilter">#D9FFFFFF</color>
+    <color name="cardBackground">#BEFFFFFF</color>
 
     <color name="africa">#00A000</color>
     <color name="americas">#D60000</color>

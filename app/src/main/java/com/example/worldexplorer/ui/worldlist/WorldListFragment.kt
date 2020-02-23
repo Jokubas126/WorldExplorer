@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.worldexplorer.R
@@ -21,7 +22,6 @@ class WorldListFragment : Fragment(), WorldListAdapter.ItemClickListener {
 
     private lateinit var layoutManager: LinearLayoutManager
     private lateinit var adapter: WorldListAdapter
-    private var state: Parcelable? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,9 +37,6 @@ class WorldListFragment : Fragment(), WorldListAdapter.ItemClickListener {
 
         layoutManager = LinearLayoutManager(context)
         recycler_view.layoutManager = layoutManager
-
-        if (state != null)
-            layoutManager.onRestoreInstanceState(state)
 
         observeViewModel()
     }
@@ -81,9 +78,8 @@ class WorldListFragment : Fragment(), WorldListAdapter.ItemClickListener {
         layoutManager.scrollToPositionWithOffset(position, 5)
     }
 
-
     override fun onPause() {
         super.onPause()
-        state = layoutManager.onSaveInstanceState()
+        viewModel.state = recycler_view.layoutManager?.onSaveInstanceState()
     }
 }

@@ -3,6 +3,8 @@ package com.example.worldexplorer.ui.worldlist
 import android.app.Application
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.Bundle
+import android.os.Parcelable
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
@@ -22,6 +24,8 @@ import io.reactivex.schedulers.Schedulers
 class WorldListViewModel(application: Application) : AndroidViewModel(application) {
 
     private val app = application
+
+    var state: Parcelable? = null
 
     private val _continents = MutableLiveData<MutableList<Continent>>()
     val continents: LiveData<MutableList<Continent>> = _continents
