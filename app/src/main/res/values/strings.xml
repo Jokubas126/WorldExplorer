@@ -9,6 +9,7 @@
     <string name="world_list_fragment">World</string>
 
     <!-- Image content descriptions -->
+    <string name="background_image">Background image</string>
     <string name="continent_image">Continent image</string>
     <string name="flag_image">Flag image</string>
 

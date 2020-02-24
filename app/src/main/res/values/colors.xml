@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#002E57</color>
     <color name="colorAccent">#D60000</color>
 
+    <color name="transparent">#00FFFFFF</color>
+
     <color name="countryBackgroundFilter">#D9FFFFFF</color>
     <color name="cardBackground">#BEFFFFFF</color>
 
