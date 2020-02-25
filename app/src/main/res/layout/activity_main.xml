@@ -1,15 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
+    android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    android:fitsSystemWindows="true">
 
-    <include
-        layout="@layout/content_main"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:contentDescription="@string/background_image"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_image"
+        android:tint="@color/countryBackgroundFilter"
+        android:tintMode="src_over" />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/transparent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
+            app:cardBackgroundColor="@color/transparent"
+            app:layout_constraintTop_toTopOf="@+id/imageView">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/toolbar_background">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/transparent"
+                    app:popupTheme="@style/AppTheme.PopupOverlay"
+                    app:title="World"
+                    app:titleTextAppearance="@style/ToolbarTitleStyle"
+                    app:titleTextColor="@color/colorPrimaryDark" />
+
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+
+        <include layout="@layout/content_main" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
