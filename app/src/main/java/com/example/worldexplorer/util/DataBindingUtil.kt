@@ -28,8 +28,6 @@ fun loadImage(imageView: ImageView, url: String?) {
         .into(imageView)
 }
 
-
-
 /**
  *  CODE FOR GETTING BITMAP FROM THE SVG
  *

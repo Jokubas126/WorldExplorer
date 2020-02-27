@@ -8,11 +8,14 @@
     <fragment
         android:id="@+id/worldListFragment"
         android:name="com.example.worldexplorer.ui.worldlist.WorldListFragment"
-        android:label="@string/world_list_fragment"
+        android:label="World Explorer"
         tools:layout="@layout/fragment_world_list">
         <action
             android:id="@+id/actionDetailsFragment"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/actionSearchListFragment"
+            app:destination="@id/searchListFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -21,6 +24,18 @@
         tools:layout="@layout/fragment_details">
         <argument
             android:name="country_code"
+            app:argType="string" />
+        <action
+            android:id="@+id/actionDetailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchListFragment"
+        android:name="com.example.worldexplorer.ui.searchlist.SearchListFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search_list">
+        <argument
+            android:name="key_search"
             app:argType="string" />
         <action
             android:id="@+id/actionDetailsFragment"

@@ -3,7 +3,6 @@ package com.example.worldexplorer.ui.worldlist
 import android.app.Application
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.os.Bundle
 import android.os.Parcelable
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -63,13 +62,12 @@ class WorldListViewModel(application: Application) : AndroidViewModel(applicatio
     private fun updateUi(continentName: String?, s: Any?) {
         when (s) {
             is List<*> -> {
-                @Suppress("UNCHECKED_CAST")
                 continentList.add(
                     Continent(
                         continentName,
                         getColor(continentName),
                         getDrawable(continentName),
-                        s as List<CountryParcel>?
+                        s.filterIsInstance<CountryParcel>()
                     )
                 )
                 continentList.sortBy { it.continentTitle }

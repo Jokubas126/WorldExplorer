@@ -7,12 +7,13 @@ class Country {
     lateinit var flagUrlPath: String
 
     lateinit var name: String
+
     @SerializedName("alpha3Code")
     lateinit var code: String
 
     lateinit var capital: String
     var population: Int = 0
-    var area: Int = 0
+    var area: Double = 0.0
     val languages: List<Language> = listOf()
     val currencies: List<Currency> = listOf()
     val regionalBlocs: List<RegionalBloc> = listOf()

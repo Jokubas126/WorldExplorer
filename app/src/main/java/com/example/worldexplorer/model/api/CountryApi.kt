@@ -7,6 +7,9 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface CountryApi {
+    @GET("rest/v2/all")
+    fun getAllCountries(): Single<List<Country>>
+
     @GET("rest/v2/name/{name}?fullText=true")
     fun getCountryByFullName(@Path("name") name: String): Single<List<Country>>
 

@@ -19,11 +19,12 @@ class WorldListAdapter(groups: MutableList<Continent>?, itemClickListener: ItemC
         groups
     ) {
 
+
     private val listener = itemClickListener
 
     interface ItemClickListener {
-        fun onCountryClickListener(view: View, countryCode: String)
-        fun onContinentClickListener(position: Int)
+        fun onCountryClicked(view: View, countryCode: String)
+        fun onContinentClicked(position: Int)
     }
 
     override fun onCreateGroupViewHolder(parent: ViewGroup?, viewType: Int): ContinentViewHolder {
@@ -72,7 +73,7 @@ class WorldListAdapter(groups: MutableList<Continent>?, itemClickListener: ItemC
 
         override fun expand() {
             super.expand()
-            listener.onContinentClickListener(groupPosition)
+            listener.onContinentClicked(groupPosition)
         }
     }
 
@@ -86,7 +87,7 @@ class WorldListAdapter(groups: MutableList<Continent>?, itemClickListener: ItemC
             loadImage(view.country_flag_view, country.flagPath)
             view.country_name_view.text = country.name
 
-            view.setOnClickListener { listener.onCountryClickListener(it, country.code) }
+            view.setOnClickListener { listener.onCountryClicked(it, country.code) }
         }
     }
 }

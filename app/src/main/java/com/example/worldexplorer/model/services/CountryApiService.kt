@@ -19,6 +19,10 @@ class CountryApiService {
         .build()
         .create(CountryApi::class.java)
 
+    fun getAllCountries(): Single<List<Country>>{
+        return api.getAllCountries()
+    }
+
     fun getRegionCountryList(regionName: String): Single<List<CountryParcel>> {
         return api.getRegionCountryList(regionName)
     }

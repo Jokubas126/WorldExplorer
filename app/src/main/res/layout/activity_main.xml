@@ -45,9 +45,9 @@
                     android:layout_height="?attr/actionBarSize"
                     android:background="@color/transparent"
                     app:popupTheme="@style/AppTheme.PopupOverlay"
-                    app:title="World"
                     app:titleTextAppearance="@style/ToolbarTitleStyle"
-                    app:titleTextColor="@color/colorPrimaryDark" />
+                    app:titleTextColor="@color/colorPrimaryDark"
+                    app:menu="@menu/toolbar_menu"/>
 
             </FrameLayout>
         </androidx.cardview.widget.CardView>

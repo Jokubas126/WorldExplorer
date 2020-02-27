@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">WorldExplorer</string>
+    <string name="app_name">World Explorer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="error_loading_message">Error occurred when retrieving data</string>
+    <string name="countries_not_found_message">No countries were found</string>
     <string name="none_message">None</string>
 
     <string name="world_list_fragment">World</string>
@@ -21,4 +22,5 @@
     <string name="currencies">Currencies:&#160;</string>
     <string name="regional_blocks">Regional blocks:&#160;</string>
     <string name="bordering_countries">Bordering countries:&#160;</string>
+
 </resources>

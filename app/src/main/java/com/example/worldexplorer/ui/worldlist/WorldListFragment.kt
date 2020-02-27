@@ -70,11 +70,11 @@ class WorldListFragment : Fragment(), WorldListAdapter.ItemClickListener {
         })
     }
 
-    override fun onCountryClickListener(view: View, countryCode: String) {
+    override fun onCountryClicked(view: View, countryCode: String) {
         viewModel.onItemClicked(view, countryCode)
     }
 
-    override fun onContinentClickListener(position: Int) {
+    override fun onContinentClicked(position: Int) {
         layoutManager.scrollToPositionWithOffset(position, 5)
     }
 

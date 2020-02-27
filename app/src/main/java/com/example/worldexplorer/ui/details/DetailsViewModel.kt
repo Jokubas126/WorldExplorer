@@ -8,11 +8,8 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import com.example.worldexplorer.model.data.Country
-import com.example.worldexplorer.model.data.CountryParcel
 import com.example.worldexplorer.model.services.CountryApiService
-import com.example.worldexplorer.ui.worldlist.WorldListFragmentDirections
 import com.example.worldexplorer.util.KEY_COUNTRY_CODE
-import com.example.worldexplorer.util.KEY_COUNTRY_FULL_NAME
 import com.example.worldexplorer.util.MAIN_LOCALE
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -65,10 +62,7 @@ class DetailsViewModel : ViewModel() {
             for (i in country.borderCountryCodes.indices) {
                 borderingCountriesDisposable.add(
                     countryApiService.getCountryByCode(
-                        country.borderCountryCodes[i].toLowerCase(
-                            MAIN_LOCALE
-                        )
-                    )
+                        country.borderCountryCodes[i].toLowerCase(MAIN_LOCALE))
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
