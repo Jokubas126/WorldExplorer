@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">World Explorer</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="search_view_hint_message">Search by name, capital&#8230;</string>
 
     <string name="error_loading_message">Error occurred when retrieving data</string>
     <string name="countries_not_found_message">No countries were found</string>

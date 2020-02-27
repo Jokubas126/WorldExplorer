@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.nav_host_fragment)
 
         setupActionBarWithNavController(navController, null)
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -38,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         val searchItem = menu?.findItem(R.id.action_search)
         val searchView = searchItem?.actionView as SearchView
         searchView.setIconifiedByDefault(false)
+        searchView.queryHint = resources.getString(R.string.search_view_hint_message)
         searchView.setOnQueryTextListener(object : OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 if (query.isNotEmpty()){

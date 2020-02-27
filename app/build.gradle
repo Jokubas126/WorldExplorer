@@ -19,6 +19,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        resValue "string", "google_maps_key", (project.findProperty("GOOGLE_MAPS_API_KEY") ?: "")
     }
     buildTypes {
         release {
@@ -67,6 +68,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
     implementation "com.thoughtbot:expandablerecyclerview:$expandableRecyclerViewVersion"
     implementation 'com.caverock:androidsvg-aar:1.4'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
 
     testImplementation 'junit:junit:4.12'

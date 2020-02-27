@@ -86,6 +86,7 @@ class WorldListAdapter(groups: MutableList<Continent>?, itemClickListener: ItemC
 
             loadImage(view.country_flag_view, country.flagPath)
             view.country_name_view.text = country.name
+            view.country_capital_view.text = country.capital
 
             view.setOnClickListener { listener.onCountryClicked(it, country.code) }
         }

@@ -47,7 +47,7 @@
                     app:popupTheme="@style/AppTheme.PopupOverlay"
                     app:titleTextAppearance="@style/ToolbarTitleStyle"
                     app:titleTextColor="@color/colorPrimaryDark"
-                    app:menu="@menu/toolbar_menu"/>
+                    app:menu="@menu/toolbar_menu" />
 
             </FrameLayout>
         </androidx.cardview.widget.CardView>

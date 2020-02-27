@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName
 class CountryParcel() : Parcelable {
 
     lateinit var name: String
+    lateinit var capital: String
 
     @SerializedName("flag")
     lateinit var flagPath: String

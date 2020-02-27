@@ -23,6 +23,6 @@ class Country {
 
     val borderingCountries: MutableList<Country> = mutableListOf()
 
-    //@SerializedName("latlng")
-    //val globalPosition: MutableList<Double> = mutableListOf()
+    @SerializedName("latlng")
+    val globalPosition: MutableList<Double> = mutableListOf()
 }
