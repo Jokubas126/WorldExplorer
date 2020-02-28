@@ -9,7 +9,6 @@ import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import com.example.worldexplorer.model.data.Country
 import com.example.worldexplorer.model.services.CountryApiService
-import com.example.worldexplorer.ui.worldlist.WorldListFragmentDirections
 import com.example.worldexplorer.util.KEY_SEARCH
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -32,7 +31,7 @@ class SearchListViewModel : ViewModel() {
     lateinit var filterQuery: String
 
     fun fetch(arguments: Bundle?) {
-        if (arguments != null){
+        if (arguments != null) {
             updateUi(null)
             filterQuery = arguments.getString(KEY_SEARCH)!!
             fetchCountries()
@@ -45,8 +44,8 @@ class SearchListViewModel : ViewModel() {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                    { updateUi(it)},
-                    { updateUi(it)}
+                    { updateUi(it) },
+                    { updateUi(it) }
                 )
         )
     }
@@ -54,7 +53,7 @@ class SearchListViewModel : ViewModel() {
     private fun updateUi(s: Any?) {
         when (s) {
             is List<*> -> {
-                _countryList.value =  s.filterIsInstance<Country>()
+                _countryList.value = s.filterIsInstance<Country>()
                 _loading.value = false
                 _error.value = false
             }
@@ -69,7 +68,7 @@ class SearchListViewModel : ViewModel() {
         }
     }
 
-    fun onCountryClicked(view: View, countryCode: String){
+    fun onCountryClicked(view: View, countryCode: String) {
         val action: NavDirections = SearchListFragmentDirections.actionDetailsFragment(countryCode)
         Navigation.findNavController(view).navigate(action)
     }

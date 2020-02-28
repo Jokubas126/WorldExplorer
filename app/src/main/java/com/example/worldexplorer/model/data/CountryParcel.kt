@@ -4,7 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-class CountryParcel() : Parcelable {
+class CountryParcel : Parcelable {
 
     lateinit var name: String
     lateinit var capital: String
@@ -13,23 +13,13 @@ class CountryParcel() : Parcelable {
     lateinit var flagPath: String
 
     @SerializedName("alpha3Code")
-    lateinit var code: String
-
-    lateinit var numericCode: String
-
-    constructor(countryName: String, flag: String, countryCode: String) : this() {
-        name = countryName
-        flagPath = flag
-        code = countryCode
-    }
+    lateinit var code3: String
 
     //--------------- parcel related -----------------//
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {}
 
-    override fun describeContents(): Int {
-        return 0
-    }
+    override fun describeContents(): Int { return 0 }
 
     companion object CREATOR : Parcelable.Creator<CountryParcel> {
         override fun createFromParcel(parcel: Parcel): CountryParcel {

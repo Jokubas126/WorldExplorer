@@ -2,7 +2,6 @@ package com.example.worldexplorer.util
 
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
@@ -12,9 +11,7 @@ import com.example.worldexplorer.model.data.Language
 import com.example.worldexplorer.model.data.RegionalBloc
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 
-
 // ---------------- Image related ------------------//
-
 
 @BindingAdapter("android:imageUrl")
 fun loadImage(imageView: ImageView, url: String?) {

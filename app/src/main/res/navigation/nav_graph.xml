@@ -17,6 +17,7 @@
             android:id="@+id/actionSearchListFragment"
             app:destination="@id/searchListFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.worldexplorer.ui.details.DetailsFragment"
@@ -29,6 +30,7 @@
             android:id="@+id/actionDetailsFragment"
             app:destination="@id/detailsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/searchListFragment"
         android:name="com.example.worldexplorer.ui.searchlist.SearchListFragment"

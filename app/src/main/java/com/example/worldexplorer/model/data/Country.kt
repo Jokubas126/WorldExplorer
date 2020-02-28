@@ -8,8 +8,10 @@ class Country {
 
     lateinit var name: String
 
+    @SerializedName("alpha2Code")
+    lateinit var code2: String
     @SerializedName("alpha3Code")
-    lateinit var code: String
+    lateinit var code3: String
 
     lateinit var capital: String
     var population: Int = 0

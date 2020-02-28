@@ -19,7 +19,7 @@ class CountryApiService {
         .build()
         .create(CountryApi::class.java)
 
-    fun getAllCountries(): Single<List<Country>>{
+    fun getAllCountries(): Single<List<Country>> {
         return api.getAllCountries()
     }
 
@@ -27,11 +27,7 @@ class CountryApiService {
         return api.getRegionCountryList(regionName)
     }
 
-    fun getCountryByFullName(name: String): Single<List<Country>>{
-        return api.getCountryByFullName(name)
-    }
-
-    fun getCountryByCode(code: String): Single<Country>{
+    fun getCountryByCode(code: String): Single<Country> {
         return api.getCountryByCode(code)
     }
 }

@@ -1,6 +1,5 @@
 package com.example.worldexplorer.ui.details
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -22,7 +21,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_details.*
 
 
-class DetailsFragment : Fragment(), BorderingCountriesAdapter.CountryClickedListener, OnMapReadyCallback,
+class DetailsFragment : Fragment(), BorderingCountriesAdapter.CountryClickedListener,
+    OnMapReadyCallback,
     TouchableSupportMapFragment.OnMapTouchListener {
 
     private lateinit var viewModel: DetailsViewModel
@@ -54,7 +54,7 @@ class DetailsFragment : Fragment(), BorderingCountriesAdapter.CountryClickedList
             if (it != null) {
                 informationLayout.country = it
                 getMapReady()
-                if (!it.borderingCountries.isNullOrEmpty()){
+                if (!it.borderingCountries.isNullOrEmpty()) {
                     recycler_view.adapter = BorderingCountriesAdapter(it.borderingCountries, this)
                     bordering_countries_group.visibility = View.VISIBLE
                 }
@@ -63,19 +63,17 @@ class DetailsFragment : Fragment(), BorderingCountriesAdapter.CountryClickedList
         })
         viewModel.loading.observe(viewLifecycleOwner, Observer {
             if (it != null)
-                if (it){
+                if (it) {
                     progress_bar.visibility = View.VISIBLE
                     details_information_layout.visibility = View.GONE
-                }
-                else progress_bar.visibility = View.GONE
+                } else progress_bar.visibility = View.GONE
         })
         viewModel.error.observe(viewLifecycleOwner, Observer {
             if (it != null)
-                if (it){
+                if (it) {
                     error_view.visibility = View.VISIBLE
                     details_information_layout.visibility = View.GONE
-                }
-                else error_view.visibility = View.GONE
+                } else error_view.visibility = View.GONE
         })
     }
 
@@ -83,17 +81,18 @@ class DetailsFragment : Fragment(), BorderingCountriesAdapter.CountryClickedList
         viewModel.onCountryClicked(view, countryCode)
     }
 
-    private fun getMapReady(){
-        val mapFragment: TouchableSupportMapFragment = childFragmentManager.findFragmentById(R.id.map) as TouchableSupportMapFragment
+    private fun getMapReady() {
+        val mapFragment: TouchableSupportMapFragment =
+            childFragmentManager.findFragmentById(R.id.map) as TouchableSupportMapFragment
         mapFragment.getMapAsync(this)
         mapFragment.setOnTouchListener(this)
 
-        details_top_information_layout.setOnTouchListener{ _: View, event: MotionEvent ->
+        details_information_layout.setOnTouchListener { _: View, event: MotionEvent ->
             onTouchDownScrollableEnabled(event, true)
             return@setOnTouchListener true
         }
 
-        recycler_view.addOnItemTouchListener(object: RecyclerView.SimpleOnItemTouchListener(){
+        recycler_view.addOnItemTouchListener(object : RecyclerView.SimpleOnItemTouchListener() {
             override fun onInterceptTouchEvent(rv: RecyclerView, event: MotionEvent): Boolean {
                 onTouchDownScrollableEnabled(event, true)
                 return super.onInterceptTouchEvent(rv, event)
@@ -102,7 +101,10 @@ class DetailsFragment : Fragment(), BorderingCountriesAdapter.CountryClickedList
     }
 
     override fun onMapReady(map: GoogleMap?) {
-        val countryPosition = LatLng(informationLayout.country!!.globalPosition[0], informationLayout.country!!.globalPosition[1])
+        val countryPosition = LatLng(
+            informationLayout.country!!.globalPosition[0],
+            informationLayout.country!!.globalPosition[1]
+        )
         map!!.addMarker(MarkerOptions().position(countryPosition))
         map.moveCamera(CameraUpdateFactory.newLatLng(countryPosition))
         map.setMaxZoomPreference(17.5f)
@@ -113,8 +115,8 @@ class DetailsFragment : Fragment(), BorderingCountriesAdapter.CountryClickedList
         onTouchDownScrollableEnabled(event, false)
     }
 
-    private fun onTouchDownScrollableEnabled(event: MotionEvent, enabled: Boolean){
-        when (event.action){
+    private fun onTouchDownScrollableEnabled(event: MotionEvent, enabled: Boolean) {
+        when (event.action) {
             MotionEvent.ACTION_DOWN -> nested_scroll_view.scrollable = enabled
         }
     }

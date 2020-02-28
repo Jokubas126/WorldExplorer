@@ -58,11 +58,12 @@ class DetailsViewModel : ViewModel() {
     }
 
     private fun fetchBorderingCountries(country: Country) {
-        if (!country.borderCountryCodes.isNullOrEmpty()){
+        if (!country.borderCountryCodes.isNullOrEmpty()) {
             for (i in country.borderCountryCodes.indices) {
                 borderingCountriesDisposable.add(
                     countryApiService.getCountryByCode(
-                        country.borderCountryCodes[i].toLowerCase(MAIN_LOCALE))
+                        country.borderCountryCodes[i].toLowerCase(MAIN_LOCALE)
+                    )
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(

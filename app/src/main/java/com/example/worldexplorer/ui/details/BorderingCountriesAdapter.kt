@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.worldexplorer.R
 import com.example.worldexplorer.databinding.ItemBorderingCountryBinding
 import com.example.worldexplorer.model.data.Country
-import com.example.worldexplorer.model.data.CountryParcel
 
 class BorderingCountriesAdapter(private val countryList: MutableList<Country>, onCountryClickedListener: CountryClickedListener) :
     RecyclerView.Adapter<BorderingCountriesAdapter.ViewHolder>() {
@@ -48,7 +47,7 @@ class BorderingCountriesAdapter(private val countryList: MutableList<Country>, o
             itemCountryBinding.country = country
 
             itemView.setOnClickListener {
-                listener.onCountryClickedListener(it, country.code)
+                listener.onCountryClickedListener(it, country.code3)
             }
         }
     }

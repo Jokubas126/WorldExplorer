@@ -56,11 +56,11 @@ class SearchListAdapter(private val listener: SearchAdapterActionsListener) :
                 filteredList.addAll(countryList)
             } else {
                 val filterPattern = constraint.toString().toLowerCase(MAIN_LOCALE).trim()
-
                 for (country in countryList) {
                     if (country.name.toLowerCase(MAIN_LOCALE).contains(filterPattern)
                         || country.capital.toLowerCase(MAIN_LOCALE).contains(filterPattern)
-                        || country.code.toLowerCase(MAIN_LOCALE).contains(filterPattern)
+                        || country.code2.toLowerCase(MAIN_LOCALE).contains(filterPattern)
+                        || country.code3.toLowerCase(MAIN_LOCALE).contains(filterPattern)
                     ) {
                         filteredList.add(country)
                     }
@@ -72,12 +72,12 @@ class SearchListAdapter(private val listener: SearchAdapterActionsListener) :
         }
 
         override fun publishResults(constraint: CharSequence, results: FilterResults) {
-            filteredCountryList.clear()
             @Suppress("UNCHECKED_CAST")
-            filteredCountryList.addAll(results.values as Collection<Country>)
-            notifyDataSetChanged()
-            if (filteredCountryList.isNullOrEmpty())
-                listener.onAdapterEmpty()
+            if (!(results.values as Collection<Country>).isNullOrEmpty()) {
+                filteredCountryList.clear()
+                filteredCountryList.addAll(results.values as Collection<Country>)
+                notifyDataSetChanged()
+            } else listener.onAdapterEmpty()
         }
     }
 
@@ -88,7 +88,7 @@ class SearchListAdapter(private val listener: SearchAdapterActionsListener) :
 
         fun onBind(country: Country, listener: SearchAdapterActionsListener) {
             view.country = country
-            view.root.setOnClickListener { listener.onCountryClicked(view.root, country.code) }
+            view.root.setOnClickListener { listener.onCountryClicked(view.root, country.code3) }
         }
     }
 }

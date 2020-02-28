@@ -10,9 +10,6 @@ interface CountryApi {
     @GET("rest/v2/all")
     fun getAllCountries(): Single<List<Country>>
 
-    @GET("rest/v2/name/{name}?fullText=true")
-    fun getCountryByFullName(@Path("name") name: String): Single<List<Country>>
-
     @GET("rest/v2/alpha/{code}")
     fun getCountryByCode(@Path("code") code: String): Single<Country>
 

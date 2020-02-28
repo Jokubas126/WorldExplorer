@@ -18,7 +18,7 @@ class TouchableSupportMapFragment : SupportMapFragment() {
         fun onMapTouch(event: MotionEvent)
     }
 
-    fun setOnTouchListener(listener: OnMapTouchListener){
+    fun setOnTouchListener(listener: OnMapTouchListener) {
         this.listener = listener
     }
 
@@ -30,7 +30,12 @@ class TouchableSupportMapFragment : SupportMapFragment() {
         val layout: View? = super.onCreateView(inflater, parent, savedInstanceState)
 
         val frameLayout = TouchableWrapper(activity!!.applicationContext)
-        frameLayout.setBackgroundColor(ContextCompat.getColor(activity!!.applicationContext, android.R.color.transparent))
+        frameLayout.setBackgroundColor(
+            ContextCompat.getColor(
+                activity!!.applicationContext,
+                android.R.color.transparent
+            )
+        )
 
         (layout as ViewGroup).addView(
             frameLayout,
@@ -44,7 +49,7 @@ class TouchableSupportMapFragment : SupportMapFragment() {
 
     inner class TouchableWrapper(context: Context) : FrameLayout(context) {
         override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
-            when(event!!.action){
+            when (event!!.action) {
                 MotionEvent.ACTION_DOWN -> listener.onMapTouch(event)
             }
             return super.dispatchTouchEvent(event)

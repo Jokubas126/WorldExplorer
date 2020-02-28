@@ -13,20 +13,20 @@
     <androidx.cardview.widget.CardView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="@dimen/default_card_gaps"
         app:cardElevation="0dp"
         app:cardBackgroundColor="@color/cardBackground"
-        app:cardCornerRadius="5dp">
+        app:cardCornerRadius="@dimen/default_card_corner_radius">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="8dp"
+            android:padding="@dimen/default_card_info_padding"
             tools:ignore="UseCompoundDrawables">
 
             <ImageView
-                android:layout_width="70dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"

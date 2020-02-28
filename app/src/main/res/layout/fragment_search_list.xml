@@ -3,9 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="15dp"
-    android:layout_marginEnd="15dp"
+    android:layout_marginStart="@dimen/default_view_horizontal_margin"
+    android:layout_marginEnd="@dimen/default_view_horizontal_margin"
     tools:context=".ui.searchlist.SearchListFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -26,10 +31,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/countries_not_found_message" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
 </FrameLayout>

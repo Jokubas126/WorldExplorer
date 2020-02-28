@@ -88,7 +88,7 @@ class WorldListAdapter(groups: MutableList<Continent>?, itemClickListener: ItemC
             view.country_name_view.text = country.name
             view.country_capital_view.text = country.capital
 
-            view.setOnClickListener { listener.onCountryClicked(it, country.code) }
+            view.setOnClickListener { listener.onCountryClicked(it, country.code3) }
         }
     }
 }

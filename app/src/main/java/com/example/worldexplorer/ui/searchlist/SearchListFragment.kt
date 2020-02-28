@@ -1,6 +1,5 @@
 package com.example.worldexplorer.ui.searchlist
 
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.worldexplorer.R
 import kotlinx.android.synthetic.main.fragment_search_list.*
-
 
 class SearchListFragment : Fragment(), SearchListAdapter.SearchAdapterActionsListener {
 
@@ -38,10 +36,10 @@ class SearchListFragment : Fragment(), SearchListAdapter.SearchAdapterActionsLis
         observeViewModel()
     }
 
-    private fun observeViewModel(){
+    private fun observeViewModel() {
         viewModel.countryList.observe(viewLifecycleOwner, Observer {
-            if(it != null){
-                if (viewModel.filterQuery.isNotEmpty()){
+            if (it != null) {
+                if (viewModel.filterQuery.isNotEmpty()) {
                     searchListAdapter.updateCountryList(it, viewModel.filterQuery)
                 }
                 recycler_view.visibility = View.VISIBLE
@@ -50,24 +48,22 @@ class SearchListFragment : Fragment(), SearchListAdapter.SearchAdapterActionsLis
         })
 
         viewModel.loading.observe(viewLifecycleOwner, Observer {
-            if (it != null){
-                if (it){
+            if (it != null) {
+                if (it) {
                     progress_bar.visibility = View.VISIBLE
                     recycler_view.visibility = View.GONE
                     countries_not_found_view.visibility = View.GONE
-                }
-                else progress_bar.visibility = View.GONE
+                } else progress_bar.visibility = View.GONE
             }
         })
 
         viewModel.error.observe(viewLifecycleOwner, Observer {
-            if (it != null){
-                if (it){
+            if (it != null) {
+                if (it) {
                     error_view.visibility = View.VISIBLE
                     recycler_view.visibility = View.GONE
                     countries_not_found_view.visibility = View.GONE
-                }
-                else error_view.visibility = View.GONE
+                } else error_view.visibility = View.GONE
             }
         })
     }
