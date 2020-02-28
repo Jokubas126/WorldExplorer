@@ -41,6 +41,8 @@ def glideVersion = '4.11.0'
 def glideToVectorYouVersion = 'v2.0.0'
 def recyclerViewVersion = '1.1.0'
 def expandableRecyclerViewVersion = '1.3'
+def androidSvgVersion = '1.4'
+def googleMapsServicesVersion = '17.0.0'
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -67,8 +69,8 @@ dependencies {
     implementation "com.github.corouteam:GlideToVectorYou:$glideToVectorYouVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
     implementation "com.thoughtbot:expandablerecyclerview:$expandableRecyclerViewVersion"
-    implementation 'com.caverock:androidsvg-aar:1.4'
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation "com.caverock:androidsvg-aar:$androidSvgVersion"
+    implementation "com.google.android.gms:play-services-maps:$googleMapsServicesVersion"
 
 
     testImplementation 'junit:junit:4.12'

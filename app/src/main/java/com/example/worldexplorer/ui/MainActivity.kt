@@ -16,8 +16,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private var currentSearchQuery: String? = null
-
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,11 +57,9 @@ class MainActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object : OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 if (query.isNotEmpty()) {
-                    currentSearchQuery = query
                     val bundle = Bundle()
                     bundle.putString(KEY_SEARCH, query)
                     navController.navigate(R.id.searchListFragment, bundle)
-                    toolbar.title = resources.getString(R.string.search_fragment_label) + query
                 }
                 return false
             }

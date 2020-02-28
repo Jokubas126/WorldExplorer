@@ -76,7 +76,7 @@ fun anyListToString(textView: TextView, list: List<*>?) {
 }
 
 private fun listToString(textView: TextView, list: List<String>) {
-    val stringBuilder: StringBuilder = java.lang.StringBuilder()
+    val stringBuilder = java.lang.StringBuilder()
     for (word in list) {
         if (stringBuilder.isNotBlank())
             stringBuilder.append(", ").append(word)
@@ -85,4 +85,21 @@ private fun listToString(textView: TextView, list: List<String>) {
     if (stringBuilder.isNotBlank())
         textView.text = stringBuilder.toString()
     else textView.text = textView.resources.getString(R.string.none_message)
+}
+
+@BindingAdapter("android:bigNumberString")
+fun formatBigNumber(textView: TextView, value: String?){
+    val intString = value!!.split(".")[0]
+    val stringBuilder = java.lang.StringBuilder()
+    var separate = 0
+    for (i in intString.reversed().indices){
+        stringBuilder.append(i)
+        separate++
+        if (separate == 3){
+            stringBuilder.append(" ")
+            separate = 0
+        }
+
+    }
+    textView.text = stringBuilder.toString().reversed()
 }
