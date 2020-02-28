@@ -21,5 +21,6 @@
     <string name="currencies">Currencies:&#160;</string>
     <string name="regional_blocks">Regional blocks:&#160;</string>
     <string name="bordering_countries">Bordering countries:&#160;</string>
+    <string name="location">Country location:&#160;</string>
 
 </resources>

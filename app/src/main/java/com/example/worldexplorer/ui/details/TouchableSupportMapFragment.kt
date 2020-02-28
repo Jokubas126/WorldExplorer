@@ -2,7 +2,6 @@ package com.example.worldexplorer.ui.details
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -13,13 +12,13 @@ import com.google.android.gms.maps.SupportMapFragment
 
 class TouchableSupportMapFragment : SupportMapFragment() {
 
-    lateinit var listener: OnTouchListener
+    lateinit var listener: OnMapTouchListener
 
-    interface OnTouchListener {
-        fun onTouch(event: MotionEvent)
+    interface OnMapTouchListener {
+        fun onMapTouch(event: MotionEvent)
     }
 
-    fun setOnTouchListener(listener: OnTouchListener){
+    fun setOnTouchListener(listener: OnMapTouchListener){
         this.listener = listener
     }
 
@@ -43,12 +42,10 @@ class TouchableSupportMapFragment : SupportMapFragment() {
         return layout
     }
 
-
-
     inner class TouchableWrapper(context: Context) : FrameLayout(context) {
         override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
             when(event!!.action){
-                MotionEvent.ACTION_DOWN -> listener.onTouch(event)
+                MotionEvent.ACTION_DOWN -> listener.onMapTouch(event)
             }
             return super.dispatchTouchEvent(event)
         }

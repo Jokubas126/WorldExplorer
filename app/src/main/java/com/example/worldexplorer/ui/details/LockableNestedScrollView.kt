@@ -13,13 +13,13 @@ class LockableNestedScrollView : NestedScrollView{
 
     constructor(ctx: Context, attrs: AttributeSet, defStyleAttr: Int) : super(ctx, attrs, defStyleAttr)
 
-    var scrolling: Boolean = true
+    var scrollable: Boolean = true
 
     override fun onTouchEvent(ev: MotionEvent?): Boolean {
-        return scrolling && super.onTouchEvent(ev)
+        return scrollable && super.onTouchEvent(ev)
     }
 
     override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
-        return scrolling && super.onInterceptTouchEvent(ev)
+        return scrollable && super.onInterceptTouchEvent(ev)
     }
 }
